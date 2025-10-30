@@ -1,15 +1,15 @@
 import iziToast from 'izitoast';
-import "izitoast/dist/css/iziToast.min.css";
+import 'izitoast/dist/css/iziToast.min.css';
+import refs from './refs';
 
 iziToast.settings({
   timeout: 5000,
   balloon: true,
-  progressbar: false,
+  progressBar: false,
 });
 
 export function showInfo(message) {
   iziToast.info({
-    title: '!',
     message: `${message}`,
   });
 }
@@ -32,4 +32,23 @@ export function showError(error) {
     title: 'Ooops!',
     message: `${error.message}`,
   });
+}
+
+export function showLoadMoreBtn() {
+  setTimeout(() => {
+    refs.loadMoreBtn.classList.remove('is-hidden');
+  }, 500);
+}
+
+export function hideLoadMoreBtn() {
+  refs.loadMoreBtn.classList.add('is-hidden');
+}
+
+export function showLoader() {
+  refs.loader.style.display = 'block';
+  hideLoadMoreBtn();
+}
+
+export function hideLoader() {
+  refs.loader.style.display = 'none';
 }

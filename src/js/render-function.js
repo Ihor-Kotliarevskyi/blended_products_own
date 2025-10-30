@@ -14,7 +14,9 @@ export function renderCategories(arrey) {
 }
 
 export function renderProducts(arr) {
-  const markup = arr.map(({ id,category, brand, price, title, thumbnail}) => `
+  const markup = arr
+    .map(
+      ({ id, category, brand, price, title, thumbnail }) => `
   <li class="products__item" data-id="${id}">
     <img class="products__image" src="${thumbnail}" alt="${title}"/>
     <p class="products__title">${title}</p>
@@ -23,18 +25,28 @@ export function renderProducts(arr) {
     <p class="products__price">Price: ${price}$</p>
  </li>
 
-  `).join('');
+  `
+    )
+    .join('');
   refs.products.insertAdjacentHTML('beforeend', markup);
-
 }
 
 export function clearProdutsList() {
-  refs.products.innerHTML = "";
+  refs.products.innerHTML = '';
 }
 
-export function renderModal({ price, title, thumbnail, tags, description, shippingInformation, returnPolicy
+export function renderModal({
+  price,
+  title,
+  thumbnail,
+  tags,
+  description,
+  shippingInformation,
+  returnPolicy,
 }) {
-  const markupTags = tags.map((tag) => `<li class="modal-product__tags">${tag}</li>`).join("");
+  const markupTags = tags
+    .map(tag => `<li class="modal-product__tags">${tag}</li>`)
+    .join('');
   const markup = `<img class="modal-product__img" src="${thumbnail}" alt="${title}" />
       <div class="modal-product__content">
         <p class="modal-product__title">${title}</p>
@@ -45,6 +57,6 @@ export function renderModal({ price, title, thumbnail, tags, description, shippi
         <p class="modal-product__price">Price: ${price}$</p>
         <button class="modal-product__buy-btn" type="button">Buy</button>
       </div>
-`
-refs.modalProduct.innerHTML = markup;
+`;
+  refs.modalProduct.innerHTML = markup;
 }
